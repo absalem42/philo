@@ -6,30 +6,30 @@
 #    By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 14:25:59 by absalem           #+#    #+#              #
-#    Updated: 2024/01/03 16:00:26 by absalem          ###   ########.fr        #
+#    Updated: 2024/01/03 17:21:14 by absalem          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= philo
+NAME =		philo
 
-SRC 			=  main.c utiles.c\
+SRCS =		main.c utiles.c \
 
-CC				= cc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror 
-OBJ = $(SRC:.c=.o)
+OBJS =		$(SRCS:.c=.o)
 
-all: $(NAME)
+CC	 =		cc
+CFLAGS =	-Wall -Wextra -Werror -pthread
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ)  -o $(NAME)
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	$(RM) $(OBJ)
+			rm -f $(OBJS)
 
-fclean:	clean
-	$(RM) $(NAME)
+fclean:		clean 
+			rm -f $(NAME)
 
-re:	fclean all
+re:			fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:		all clean fclean

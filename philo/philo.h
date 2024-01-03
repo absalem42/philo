@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:26:28 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/03 16:32:32 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/03 18:22:47 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/time.h>
 # include <limits.h>
 
-# define ERROR "Error\n"
+# define MAX_NUM_PHILOSOPHERS 200
 
 typedef struct s_philo
 {
