@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   maic.c                                             :+:      :+:    :+:   */
+/*   utiles2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 15:28:18 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/03 18:33:32 by absalem          ###   ########.fr       */
+/*   Created: 2024/01/04 11:42:34 by absalem           #+#    #+#             */
+/*   Updated: 2024/01/04 14:44:42 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
-void	philo_init(t_philo **philo_p, char **av)
+long	ft_atoi(char *str)
 {
-	if (!av)
-		return ;
-	if (check_num(av))
-	{
-		ft_putstr_fd("invliad irgument",2);
-	}
-}
+	int		i;
+	long	k;
+	long	value;
 
-int main(int ac, char **av)
-{
-	t_program *philo_p;
-	
-	philo_p = NULL;
-	if (ac == 5 || ac == 6)
+	i = 0;
+	k = 1;
+	value = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-')
+		k = k * -1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		parsing()
+		value = (value * 10) + (str[i] - 48);
+		i++;
 	}
-	else
-	{
-		ft_putstr_fd("./philo_one number_philosopher time_to_die time_to_eat time_to_sleep [number_of_time_each_philosophers_must_eat]\n",2);
-		return (0);
-	}
-		
+	// if ((value > INT_MAX) || (value < INT_MIN))
+	// {
+	// 	return (0);
+	// }
+	return (value * k);
 }

@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:06:43 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/03 18:32:22 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/04 16:29:09 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,54 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	if (s == NULL || fd < 0)
 		return ;
-	if (*s != '\0')
+	int i = 0;
+	while(s[i])
 	{
-		write(fd, s, 1);
-		ft_putstr_fd(s + 1, fd);
+		write(fd,&s[i],1);
+		i++;
 	}
 }
 
-int	ft_isdigit(int c)
+int is_valid_number(char *str) 
 {
-	return (c >= '0' && c <= '9');
+   if (*str && (*str == '+'))
+		str++;
+	if (*str == '\0')
+		return (0);
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
+			return (0);
+		str++;
+	}
+	return (1);
 }
 
-int	check_num(char **av)
+int check_input(int ac, char **av) 
 {
-	int i;
-	int j;
-	
-	i = 0;
-	j = 0;
-	while(av[j])
+    int i ;
+	i = 1;
+    if (av[0] == NULL)
+        return 1;
+
+    while (i < ac)
 	{
-		i = 0;
-		while (av[j][i]) 
+        if (!is_valid_number(av[i])) 
 		{
-			if (!ft_isdigit(av[j][i]))
-				return 1;
-			i++;
-		}
-		j++;
-	}
-	return 0;
+            ft_putstr_fd(ERROR_IR, 2);
+            return 1;
+        }
+        i++;
+    }
+    return 0;
 }
+
+// int	ft_usleep(size_t milliseconds)
+// {
+// 	size_t	start;
+
+// 	start = get_current_time();
+// 	while ((get_current_time() - start) < milliseconds)
+// 		usleep(500);
+// 	return (0);
+// }
