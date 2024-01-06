@@ -12,15 +12,15 @@
 
 #include "philo.h"
 
-void	philo_init(t_philo **philo_p, char **av)
-{
-	if (!av)
-		return ;
-	if (check_num(av))
-	{
-		ft_putstr_fd("invliad irgument",2);
-	}
-}
+// void	philo_init(t_philo **philo_p, char **av)
+// {
+// 	if (!av)
+// 		return ;
+// 	if (check_num(av))
+// 	{
+// 		ft_putstr_fd("invliad irgument",2);
+// 	}
+// }
 
 int main(int ac, char **av)
 {
