@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:06:43 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/04 16:29:09 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/09 16:11:40 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ int check_input(int ac, char **av)
     while (i < ac)
 	{
         if (!is_valid_number(av[i])) 
-		{
-            ft_putstr_fd(ERROR_IR, 2);
             return 1;
-        }
         i++;
     }
     return 0;
@@ -66,4 +63,23 @@ int check_input(int ac, char **av)
 // 	while ((get_current_time() - start) < milliseconds)
 // 		usleep(500);
 // 	return (0);
+// }
+
+// void	print(t_philo *philo, int id, char *is_doing)
+// {
+// 	pthread_mutex_lock(&(philo->info->printig));
+// 	if (!ft_check_died(philo))
+// 	{
+// 		printf("%lli %i %s\n", get_time() - philo->info->start_time,
+// 			id + 1, is_doing);
+// 	}
+// 	pthread_mutex_unlock(&(philo->info->printig));
+// }
+
+// long long	get_time(void)
+// {
+// 	struct timeval	tv;
+
+// 	gettimeofday(&tv, NULL);
+// 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 // }
