@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:26:28 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/09 18:34:52 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/10 12:34:11 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@
 
 typedef struct s_params 
 {
-    int num_of_philos;
-    size_t time_to_die;
-    size_t time_to_eat;
-    size_t time_to_sleep;
-    int num_times_to_eat;
+    int     num_of_philos;
+    size_t  time_to_die;
+    size_t  time_to_eat;
+    size_t  time_to_sleep;
+    int     num_times_to_eat;
 }				 t_params;
 
 typedef struct s_philo 
@@ -65,10 +65,10 @@ typedef struct s_program {
 } t_program;
 
 
-int parsing(int ac, char **av);
-
-
-
+int     parsing(int ac, char **av, t_params *parameter);
+void    mutex_init(t_program *program, t_params *params);
+void	philo_init(t_program *program, char **av);
+int	    program_input(int ac, char **av);
 
 ///////////////////////////   utiles ///////////////
 
