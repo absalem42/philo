@@ -6,20 +6,18 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:26:28 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/10 12:34:11 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/10 16:07:59 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include <pthread.h>
+# include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
-# include <stdbool.h>
+# include <pthread.h>
 # include <sys/time.h>
-# include <limits.h>
 
 # define ERROR_IR "invliad irgument"
 # define MAX_NUM_PHILOSOPHERS 200
@@ -56,9 +54,9 @@ typedef struct s_philo
 
 typedef struct s_program {
     pthread_mutex_t forks[MAX_NUM_PHILOSOPHERS];
-    t_philo philos[MAX_NUM_PHILOSOPHERS];
-    t_params params;
-    int dead_flag;
+    t_philo         philos[MAX_NUM_PHILOSOPHERS];
+    t_params        params;
+    int             dead_flag;
     pthread_mutex_t dead_lock;
     pthread_mutex_t meal_lock;
     pthread_mutex_t write_lock;
@@ -69,12 +67,17 @@ int     parsing(int ac, char **av, t_params *parameter);
 void    mutex_init(t_program *program, t_params *params);
 void	philo_init(t_program *program, char **av);
 int	    program_input(int ac, char **av);
-
+void    init_philo(t_program *program, t_params *params);
 ///////////////////////////   utiles ///////////////
 
 void	ft_putstr_fd(char *s, int fd);
 int	is_valid_number(char *str);
 int	ft_atoi(char *str);
 int check_input(int ac, char **av);
+
+
+int	            ft_usleep(size_t milliseconds);
+long long	    get_time(void);
+void	        destroy_mutexes(t_program *program);
 
 #endif

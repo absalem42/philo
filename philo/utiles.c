@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:06:43 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/09 16:11:40 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/10 16:08:12 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,25 @@ int check_input(int ac, char **av)
     return 0;
 }
 
-// int	ft_usleep(size_t milliseconds)
-// {
-// 	size_t	start;
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
 
-// 	start = get_current_time();
-// 	while ((get_current_time() - start) < milliseconds)
-// 		usleep(500);
-// 	return (0);
-// }
+	start = get_time();
+	while ((get_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
+}
+
+
+long long	get_time(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+}
+
 
 // void	print(t_philo *philo, int id, char *is_doing)
 // {
@@ -74,12 +84,4 @@ int check_input(int ac, char **av)
 // 			id + 1, is_doing);
 // 	}
 // 	pthread_mutex_unlock(&(philo->info->printig));
-// }
-
-// long long	get_time(void)
-// {
-// 	struct timeval	tv;
-
-// 	gettimeofday(&tv, NULL);
-// 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 // }

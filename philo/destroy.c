@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 15:28:18 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/10 16:11:23 by absalem          ###   ########.fr       */
+/*   Created: 2024/01/10 14:41:53 by absalem           #+#    #+#             */
+/*   Updated: 2024/01/10 15:14:00 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
-
-int main(int ac, char **av)
+void	destroy_mutexes(t_program *program)
 {
-	t_program program;
+	int	i;
 
-	if(parsing(ac, av, &program.params) != 0)
-		return (0);
-	// printf("dfdf");
-	philo_init(&program, av);
-	destroy_mutexes(&program);
-	return (0);
+	i = 0;
+	while (i < program->params.num_of_philos)
+	{
+		pthread_mutex_destroy(&program->forks[i]);
+		i++;
+	}
+    pthread_mutex_destroy(&program->dead_lock);
+	pthread_mutex_destroy(&program->meal_lock);
+	pthread_mutex_destroy(&program->write_lock);
 }
