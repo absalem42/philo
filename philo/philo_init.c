@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:13:38 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/10 16:11:33 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/11 17:38:41 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,24 @@ void    mutex_init(t_program *program, t_params *params)
         pthread_mutex_init(&program->forks[i], NULL);
         i++;
     }
+}
+
+void    init_thread(t_program *program)
+{
+    int i; 
     i = 0;
+
+    while(i < program->params.num_of_philos)
+    {
+        pthread_create(&program->philos[i], NULL, routin, &program);
+        i++;
+    }
+    i = 0;
+     while(i < program->params.num_of_philos)
+    {
+        pthread_join(&program->philos[i], NULL, routin, &program);
+        i++;
+    }
 }
 
 void	philo_init(t_program *program, char **av)
@@ -58,4 +75,5 @@ void	philo_init(t_program *program, char **av)
     program->dead_flag = -1;
     mutex_init(program, &program->params);
     init_philo(program, &program->params);
+    init_thread(program);
 }

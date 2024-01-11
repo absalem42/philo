@@ -6,13 +6,11 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:28:18 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/10 16:11:23 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/11 17:33:32 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-
 
 int main(int ac, char **av)
 {
