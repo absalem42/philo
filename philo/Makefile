@@ -6,19 +6,19 @@
 #    By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 14:25:59 by absalem           #+#    #+#              #
-#    Updated: 2024/01/10 16:11:17 by absalem          ###   ########.fr        #
+#    Updated: 2024/01/13 14:26:55 by absalem          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		philo
 
 SRCS =		main.c parsing.c utiles.c utiles2.c destroy.c \
-			philo_init.c \
+			philo_init.c routin.c thread_handel.c\
 
 OBJS =		$(SRCS:.c=.o)
 
 CC	 =		cc
-CFLAGS =	-Wall -Wextra -Werror -pthread
+CFLAGS =	-Wall -Wextra -Werror -pthread -g3 -fsanitize=address
 
 all:		$(NAME)
 

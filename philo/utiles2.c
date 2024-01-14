@@ -6,19 +6,15 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:42:34 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/10 18:31:37 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/13 12:54:44 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-/**
- * @brief convert from string to int
- * @param str 
- * @return int
- */
+
 int	ft_atoi(char *str)
 {
-	int		i;
+	int	i;
 	int	k;
 	int	value;
 

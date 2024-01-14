@@ -14,7 +14,7 @@
 
 void	destroy_mutexes(t_program *program)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < program->params.num_of_philos)
@@ -22,7 +22,7 @@ void	destroy_mutexes(t_program *program)
 		pthread_mutex_destroy(&program->forks[i]);
 		i++;
 	}
-    pthread_mutex_destroy(&program->dead_lock);
+	pthread_mutex_destroy(&program->dead_lock);
 	pthread_mutex_destroy(&program->meal_lock);
 	pthread_mutex_destroy(&program->write_lock);
 }

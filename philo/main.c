@@ -6,20 +6,20 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:28:18 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/11 17:33:32 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/14 11:28:00 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_program program;
+	t_program	program;
 
-	if(parsing(ac, av, &program.params) != 0)
+	if (parsing(ac, av, &program.params) != 0)
 		return (0);
 	// printf("dfdf");
-	philo_init(&program, av);
-	destroy_mutexes(&program);
+	philo_init(&program);
+	// destroy_mutexes(&program);
 	return (0);
 }
