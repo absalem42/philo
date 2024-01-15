@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:28:18 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/14 11:28:00 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/14 20:56:13 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ int	main(int ac, char **av)
 		return (0);
 	// printf("dfdf");
 	philo_init(&program);
-	// destroy_mutexes(&program);
 	return (0);
 }

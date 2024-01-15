@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:13:38 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/14 18:34:13 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/15 14:33:29 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,12 @@ void    mutex_init(t_program *program, t_params *params)
 
 void    init_thread(t_philo *philos, t_program *program)
 {
-    (void)program;
-    // thread_obeserv(program);
     thread_creat(philos);
-    // join_obeserv(program);
+    obeserv(philos);
     join_thread(philos);
+    destroy_mutexes(program);
     
 }
-
 
 void	philo_init(t_program *program)
 {

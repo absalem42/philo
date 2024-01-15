@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:26:28 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/14 14:55:00 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:16:05 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ void				destroy_mutexes(t_program *program);
 
 
 
-void				*routin(void *data);
+// check dead
+int		philosophers_are_alive(t_philo *philo);
 
 
 void thread_creat(t_philo *philos);
@@ -93,7 +94,7 @@ void	*routine(void *arg);
 void 	eating_philo(t_philo *philo);
 int check_time_of_death(t_philo *philo);
 void thread_obeserv(t_program *program);
-void	*obeserv(void *philos);
+void	obeserv(t_philo *philos);
 
 void    init_thread(t_philo *philos, t_program *program);
 
