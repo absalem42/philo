@@ -55,6 +55,5 @@ int	parsing(int ac, char **av, t_params *parameter)
 		parameter->num_times_to_eat = ft_atoi(av[5]);
 	else
 		parameter->num_times_to_eat = -1;
-	
 	return (0);
 }

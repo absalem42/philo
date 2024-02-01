@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:06:43 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/10 16:08:12 by absalem          ###   ########.fr       */
+/*   Updated: 2024/01/31 16:45:27 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,17 @@ int	check_input(int ac, char **av)
 	return (0);
 }
 
-int	ft_usleep(size_t milliseconds)
+int	ft_usleep(size_t milliseconds, t_philo *philo)
 {
 	size_t	start;
 
 	start = get_time();
 	while ((get_time() - start) < milliseconds)
+	{
+		if (philosophers_are_not_alive(philo))
+			return (0);
 		usleep(500);
+	}
 	return (0);
 }
 
@@ -74,14 +78,3 @@ long long	get_time(void)
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
-
-// void	print(t_philo *philo, int id, char *is_doing)
-// {
-// 	pthread_mutex_lock(&(philo->info->printig));
-// 	if (!ft_check_died(philo))
-// 	{
-// 		printf("%lli %i %s\n", get_time() - philo->info->start_time,
-// 			id + 1, is_doing);
-// 	}
-// 	pthread_mutex_unlock(&(philo->info->printig));
-// }

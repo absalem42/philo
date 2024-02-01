@@ -6,13 +6,14 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:26:28 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/15 17:16:05 by absalem          ###   ########.fr       */
+/*   Updated: 2024/02/01 17:16:54 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include "philo.h"
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -37,7 +38,6 @@ typedef struct s_philo
 	t_params		*params;
 	pthread_t		thread;
 	int				id;
-	// Other fields in t_philo
 	int				eating;
 	int				meals_eaten;
 	size_t			last_meal;
@@ -56,48 +56,38 @@ typedef struct s_program
 	t_philo			philos[MAX_NUM_PHILOSOPHERS];
 	t_params		params;
 	int				dead_flag;
-	pthread_t		 obeserv;
+	pthread_t		obeserv;
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	write_lock;
 }					t_program;
 
-int					parsing(int ac, char **av, t_params *parameter);
-void				mutex_init(t_program *program, t_params *params);
-void				philo_init(t_program *program);
-int					program_input(int ac, char **av);
-void				init_philo(t_program *program, t_params *params);
-///////////////////////////   utiles ///////////////
+///////////////////////////    ///////////////
 
+int					parsing(int ac, char **av, t_params *parameter);
+int					program_input(int ac, char **av);
+void				philo_init(t_program *program);
+void				mutex_init(t_program *program, t_params *params);
+void				init_philo(t_program *program, t_params *params);
+void				init_thread(t_philo *philos, t_program *program);
+void				destroy_mutexes(t_program *program);
+void				thread_creat(t_philo *philos);
+void				join_thread(t_philo *philos);
+void				death(t_philo *philo);
+int					philosophers_are_not_alive(t_philo *philo);
+int					check_time_of_death(t_philo *philo);
+int					check_done_eat(t_philo *philo);
+void				obeserv(t_philo *philos);
+void				*routine(void *arg);
+void				eating_philo(t_philo *philo);
+
+/////////////////////////////   utiles ///////////////
 void				ft_putstr_fd(char *s, int fd);
 int					is_valid_number(char *str);
-int					ft_atoi(char *str);
 int					check_input(int ac, char **av);
-
-int					ft_usleep(size_t milliseconds);
+int					ft_usleep(size_t milliseconds, t_philo *philo);
 long long			get_time(void);
-void				destroy_mutexes(t_program *program);
-
-
-
-// check dead
-int		philosophers_are_alive(t_philo *philo);
-
-
-void thread_creat(t_philo *philos);
-void join_thread(t_philo *philos);
-
-
-void	*routine(void *arg);
-
-
-void 	eating_philo(t_philo *philo);
-int check_time_of_death(t_philo *philo);
-void thread_obeserv(t_program *program);
-void	obeserv(t_philo *philos);
-
-void    init_thread(t_philo *philos, t_program *program);
-
-void join_obeserv(t_program *program);
+int					ft_atoi(char *str);
+void				print_message(t_philo *philo, char *message);
 
 #endif

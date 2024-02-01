@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:42:34 by absalem           #+#    #+#             */
-/*   Updated: 2024/01/13 12:54:44 by absalem          ###   ########.fr       */
+/*   Updated: 2024/02/01 19:23:54 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 int	ft_atoi(char *str)
 {
 	int	i;
-	int	k;
 	int	value;
 
 	i = 0;
-	k = 1;
 	value = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-')
 		return (-1);
-	if (str[i] == '+' || str[i] == '-')
+	if (str[i] == '+')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -34,31 +32,16 @@ int	ft_atoi(char *str)
 	}
 	if (value < 0)
 		return (-1);
-	return (value * k);
+	return (value);
 }
 
-// int	ft_atoi(char *str)
-// {
-// 	int		i;
-// 	long	res;
-// 	int		sign;
-
-// 	sign = 1;
-// 	res = 0;
-// 	i = 0;
-// 	if (str[i] == '-')
-// 		return (0);
-// 	if (str[i] == '+')
-// 		i++;
-// 	while (!ft_isdigit(str[i++]))
-// 		return (0);
-// 	i = 0;
-// 	while (ft_isdigit(str[i]))
-// 	{
-// 		res = (res * 10) + (str[i] - 48);
-// 		i++;
-// 		if ((res > 2147483647 && sign == 1))
-// 			return (-1);
-// 	}
-// 	return (res * sign);
-// }
+void	print_message(t_philo *philo, char *message)
+{
+	pthread_mutex_lock(philo->write_lock);
+	if (!philosophers_are_not_alive(philo))
+	{
+		printf("%llu %d %s\n", get_time() - philo->start_time, philo->id,
+			message);
+	}
+	pthread_mutex_unlock(philo->write_lock);
+}
