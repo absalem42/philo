@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 13:12:18 by absalem           #+#    #+#             */
-/*   Updated: 2024/02/01 15:54:31 by absalem          ###   ########.fr       */
+/*   Updated: 2024/02/03 11:04:23 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	*routine(void *arg)
 		ft_usleep(philo->params->time_to_sleep, philo);
 		print_message(philo, "is thinking");
 		if (philo->params->num_of_philos % 2)
-			ft_usleep(philo->params->time_to_eat, philo);
+			ft_usleep(2, philo);
 	}
 	return (arg);
 }

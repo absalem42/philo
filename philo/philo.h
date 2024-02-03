@@ -6,7 +6,7 @@
 /*   By: absalem < absalem@student.42abudhabi.ae    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:26:28 by absalem           #+#    #+#             */
-/*   Updated: 2024/02/01 17:16:54 by absalem          ###   ########.fr       */
+/*   Updated: 2024/02/03 11:13:57 by absalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_program
 	t_philo			philos[MAX_NUM_PHILOSOPHERS];
 	t_params		params;
 	int				dead_flag;
-	pthread_t		obeserv;
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	write_lock;
